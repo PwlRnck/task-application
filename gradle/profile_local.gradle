@@ -1,0 +1,6 @@
+//apply plugin: 'war'
+
+dependencies {
+    compile('mysql:mysql-connector-java')
+    //providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+}
