@@ -22,7 +22,7 @@ public class EmailScheduler {
     @Autowired
     private AdminConfig adminConfig;
 
-    @Scheduled(fixedDelay = 10000)//(cron = "0 0 10 * * *")
+    @Scheduled(fixedDelay = 3600000)//(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
         String tasksNumber;
@@ -38,6 +38,6 @@ public class EmailScheduler {
                 null,
                 SUBJECT,
                 "Currently you have got: " + tasksNumber + " in your database."
-        ));
+        ), SimpleEmailService.REPORT);
     }
 }
