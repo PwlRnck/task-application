@@ -1,6 +1,7 @@
 package com.crud.tasks.controller;
 
 
+import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
@@ -22,6 +23,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,6 +37,9 @@ public class TaskControllerTest {
     @MockBean
     private TaskMapper taskMapper;
 
+    @MockBean
+    private DbService dbService;
+
     @Test
     public void testGetTasks() throws Exception {
         //Given
@@ -45,7 +50,7 @@ public class TaskControllerTest {
         Gson gson = new Gson();
         String jsonContent = gson.toJson(taskList);
         //When&Then
-        mockMvc.perform(get("/v1/task/getTasks")
+        mockMvc.perform(get("/v1/tasks")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(jsonContent))
                 .andExpect(status().is(200))
@@ -64,7 +69,7 @@ public class TaskControllerTest {
         Gson gson = new Gson();
         String jsonContent = gson.toJson(taskDtoUpdated);
         //When&Then
-        mockMvc.perform(put("/v1/task/updateTask")
+        mockMvc.perform(put("/v1/tasks")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(jsonContent))
                 .andExpect(status().is(200))
@@ -72,6 +77,18 @@ public class TaskControllerTest {
                 .andExpect(jsonPath("$.title", is("New task updated")))
                 .andExpect(jsonPath("$.content", is("My new task updated")));
     }
+
+    @Test
+    public void testCreateTask() throws Exception {
+        //Given
+        Task task= new Task(1L, "New task", "My new task");
+        when(dbService.saveTask(task)).thenReturn(task);
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(task);
+        //When&Then
+        mockMvc.perform(post("/v1/tasks")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(jsonContent))
+                .andExpect(status().is(200));
+    }
 }
-
-
