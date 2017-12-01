@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CoreConfiguration</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.crud.tasks.config</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CoreConfiguration (com.crud.tasks.config)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CoreConfiguration</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 13)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CoreConfiguration$$EnhancerBySpringCGLIB$$4d4f5af1</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 13)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.crud.tasks.config;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.springframework.context.annotation.Bean;
+<i>4</i>&nbsp;import org.springframework.context.annotation.Configuration;
+<i>5</i>&nbsp;import org.springframework.context.annotation.Profile;
+<i>6</i>&nbsp;import org.springframework.context.annotation.PropertySource;
+<i>7</i>&nbsp;import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+<i>8</i>&nbsp;import org.springframework.mail.javamail.JavaMailSender;
+<i>9</i>&nbsp;import org.springframework.scheduling.annotation.EnableScheduling;
+<i>10</i>&nbsp;import org.springframework.web.client.RestTemplate;
+<i>11</i>&nbsp;import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+<i>12</i>&nbsp;import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+<i>13</i>&nbsp;import springfox.documentation.builders.PathSelectors;
+<i>14</i>&nbsp;import springfox.documentation.builders.RequestHandlerSelectors;
+<i>15</i>&nbsp;import springfox.documentation.spi.DocumentationType;
+<i>16</i>&nbsp;import springfox.documentation.spring.web.plugins.Docket;
+<i>17</i>&nbsp;import springfox.documentation.swagger2.annotations.EnableSwagger2;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;@EnableScheduling
+<i>20</i>&nbsp;@EnableSwagger2
+<i>21</i>&nbsp;@Configuration
+<i>22</i>&nbsp;@PropertySource(&quot;file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret.properties&quot;)//(&quot;classpath:secret.properties&quot;)
+<b class="nc"><i>23</i>&nbsp;public class CoreConfiguration implements WebMvcConfigurer {</b>
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @Bean
+<i>26</i>&nbsp;    public RestTemplate restTemplate() {
+<b class="nc"><i>27</i>&nbsp;        return new RestTemplate();</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    @Bean
+<i>31</i>&nbsp;    public Docket api() {
+<b class="nc"><i>32</i>&nbsp;        return new Docket(DocumentationType.SWAGGER_2)</b>
+<b class="nc"><i>33</i>&nbsp;                .select()</b>
+<i>34</i>&nbsp;                //.apis(RequestHandlerSelectors.any())
+<b class="nc"><i>35</i>&nbsp;                .apis(RequestHandlerSelectors.basePackage(&quot;com.crud.tasks.controller&quot;))</b>
+<b class="nc"><i>36</i>&nbsp;                .paths(PathSelectors.any())</b>
+<b class="nc"><i>37</i>&nbsp;                .build();</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    @Override
+<i>41</i>&nbsp;    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+<i>42</i>&nbsp;        // Required by Swagger UI configuration
+<b class="nc"><i>43</i>&nbsp;        registry.addResourceHandler(&quot;/lib/**&quot;).addResourceLocations(&quot;/lib/&quot;).setCachePeriod(0);</b>
+<b class="nc"><i>44</i>&nbsp;        registry.addResourceHandler(&quot;/images/**&quot;).addResourceLocations(&quot;/images/&quot;).setCachePeriod(0);</b>
+<b class="nc"><i>45</i>&nbsp;        registry.addResourceHandler(&quot;/css/**&quot;).addResourceLocations(&quot;/css/&quot;).setCachePeriod(0);</b>
+<b class="nc"><i>46</i>&nbsp;        registry.addResourceHandler(&quot;swagger-ui.html&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/&quot;);</b>
+<b class="nc"><i>47</i>&nbsp;        registry.addResourceHandler(&quot;/webjars/**&quot;).addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;);</b>
+<b class="nc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-10-21 23:04</div>
+</div>
+</body>
+</html>

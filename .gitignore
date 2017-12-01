@@ -2,6 +2,10 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
+secret.properties
+secret-heroku.properties
+secret-local.properties
+
 ### STS ###
 .apt_generated
 .classpath

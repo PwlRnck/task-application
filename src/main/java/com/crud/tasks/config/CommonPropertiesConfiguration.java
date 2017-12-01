@@ -13,14 +13,12 @@ public class CommonPropertiesConfiguration extends PropertiesConfiguration {
     @Bean
     @Profile(Profiles.LOCAL)
     public static PropertySourcesPlaceholderConfigurer localProperties() {
-        return createPropertySourcesPlaceholderConfigurer(
-                "application.properties");
+        return createPropertySourcesPlaceholderConfigurer("application.properties");
     }
 
     @Bean
     @Profile(Profiles.HEROKU)
     public static PropertySourcesPlaceholderConfigurer herokuProperties() {
-        return createPropertySourcesPlaceholderConfigurer(
-                "application-heroku.properties");
+        return createPropertySourcesPlaceholderConfigurer("application-heroku.properties");
     }
 }
