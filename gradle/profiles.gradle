@@ -1,14 +1,14 @@
 
-    def herokuProfiles='heroku'
-    def localProfiles='local'
+    def herokuProfiles='heroku';
+    def localProfiles='local';
     def propertyDrivenProfiles;
 
     if (project.hasProperty('heroku')) {
-        propertyDrivenProfiles = herokuProfiles
+        propertyDrivenProfiles = herokuProfiles;
         apply from: rootProject.file('gradle/profile_heroku.gradle');
 
     } else {//if (project.hasProperty('local')) {
-        propertyDrivenProfiles = localProfiles
+        propertyDrivenProfiles = localProfiles;
         apply from: rootProject.file('gradle/profile_local.gradle');
    }
 
