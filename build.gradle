@@ -41,6 +41,9 @@ buildscript {
 		compile('org.springframework.boot:spring-boot-starter-actuator')
 	}
 
+
+
+
 	bootRun {
 	}
 
