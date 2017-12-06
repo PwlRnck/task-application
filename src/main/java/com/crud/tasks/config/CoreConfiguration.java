@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @Configuration
 @Profile("local")
-@PropertySource({"file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret.properties", "file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret-local.properties"})//("classpath:secret.properties")
+//@PropertySource({"file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret.properties", "file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret-local.properties"})//("classpath:secret.properties")
 public class CoreConfiguration implements WebMvcConfigurer {
 
     @Bean

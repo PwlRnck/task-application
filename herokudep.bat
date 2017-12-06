@@ -64,6 +64,8 @@ call git add .
 call git commit -m "new deployment"
 call git push heroku master
 
+heroku logs
+
 :LoCase
 :: Subroutine to convert a variable VALUE to all lower case.
 :: The argument for this subroutine is the variable NAME.
