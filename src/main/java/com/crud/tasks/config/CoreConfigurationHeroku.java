@@ -20,7 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @Configuration
 @Profile("heroku")
-@PropertySource({"file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret.properties", "file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret-heroku.properties"})//("classpath:secret.properties")
 public class CoreConfigurationHeroku implements WebMvcConfigurer {
 
     @Bean

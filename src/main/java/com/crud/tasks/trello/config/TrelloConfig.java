@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-@PropertySource("file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret.properties")//("classpath:secret.properties")
+//@PropertySource("file:C:\\Users\\PR\\IdeaProjects\\tasks\\src\\main\\resources\\secret.properties")//("classpath:secret.properties")
 public class TrelloConfig {
 
     @Value("${trello.api.endpoint.prod}")
